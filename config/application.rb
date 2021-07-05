@@ -10,7 +10,7 @@ module Sample2
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
-    config.time_zone = 'Paris'
+    config.time_zone = 'orto Novo'
     config.active_record.default_timezone = :local
   end
 end
