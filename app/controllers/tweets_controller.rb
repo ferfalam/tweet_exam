@@ -47,11 +47,11 @@ class TweetsController < ApplicationController
   end
 
   private
-    def set_tweet
-      @tweet = Post.find(params[:id])
-    end
+  def set_tweet
+    @tweet = Post.find(params[:id])
+  end
 
-    def tweet_params
-      params.require(:post).permit(:content)
-    end
+  def tweet_params
+    params.require(:post).permit(:content)
+  end
 end
