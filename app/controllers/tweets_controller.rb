@@ -17,32 +17,33 @@ class TweetsController < ApplicationController
 
   def create
     @tweet = Post.new(tweet_params)
-
-    if @tweet.save
-      redirect_to tweets_path, notice: "Tweet was successfully created."
-    else
+    if params[:back]
       render :new
-    end
-  end
-
-  def update
-    respond_to do |format|
-      if @tweet.update(tweet_params)
-        format.html { redirect_to @tweet, notice: "Tweet was successfully updated." }
-        format.json { render :show, status: :ok, location: @tweet }
+    else
+      if @tweet.save
+        redirect_to tweets_path, notice: "Tweet was successfully created."
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @tweet.errors, status: :unprocessable_entity }
+        render :new
       end
     end
   end
 
+  def update
+    if @tweet.update(tweet_params)
+      redirect_to tweets_path, notice: "Tweet was successfully updated."
+    else
+      render :edit
+    end
+  end
+
+  def confirm
+    @tweet = Post.new(tweet_params)
+    render :new if @tweet.invalid?
+  end
+
   def destroy
     @tweet.destroy
-    respond_to do |format|
-      format.html { redirect_to tweets_url, notice: "Tweet was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to tweets_path, notice: "Tweet was successfully destroyed."
   end
 
   private
