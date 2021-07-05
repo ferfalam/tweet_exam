@@ -1,7 +1,16 @@
 <h3>Tweet Confirmation</h3>
 <%= form_with(model: @tweet, local: true, url: tweets_path) do |form| %>
   <%= form.hidden_field :content %>
-  <p>Content:<%= @tweet.content %></p>
-  <%= form.submit  "Confirm" %>
-  <%= form.submit "Back", name: 'back' %>
+  <div class="main">
+      <div class="card-title">
+        <div class="post-date">
+          <p>Posted at <%=@tweet.created_at%></p>
+        </div>
+      </div>
+      <div class="card-body">
+        <p><%=@tweet.content%></p>
+      </div>
+  </div>
+  <%= form.submit  "Confirm", class:"input-submit success" %>
+  <%= form.submit "Back", name: 'back', class:"back"%>
 <% end %>

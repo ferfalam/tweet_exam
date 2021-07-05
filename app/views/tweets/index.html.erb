@@ -2,23 +2,22 @@
 
 <h1>Tweets</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tweets.each do |tweet| %>
-      <tr>
-        <td><%=tweet.content%></td>
-        <td><%= link_to 'Show', tweet_path(tweet.id) %></td>
-        <td><%= link_to 'Edit', edit_tweet_path(tweet.id) %></td>
-        <td><%= link_to 'Destroy', tweet_path(tweet.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<% @tweets.each do |tweet| %>
+  <div class="main">
+      <div class="card-title">
+        <div class="card-link">
+          <ul>
+            <li><%= link_to 'Show', tweet_path(tweet.id), class:"primary" %></li>
+            <li><%= link_to 'Edit', edit_tweet_path(tweet.id), class:"warning" %></li>
+            <li><%= link_to 'Destroy', tweet_path(tweet.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"danger" %></li>          
+          </ul>
+        </div>
+        <div class="post-date">
+          <p>Posted at <%=tweet.created_at%></p>
+        </div>
+      </div>
+      <div class="card-body">
+        <p><%=tweet.content%></p>
+      </div>
+  </div>
+<% end %>
