@@ -5,6 +5,8 @@ module TweetsHelper
             confirm_tweets_path
         elsif action_name == 'edit'
             tweet_path
+        else
+            tweets_path
         end
     end
     
