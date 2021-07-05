@@ -10,6 +10,24 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <div class="logo">
+        <%= image_tag 'logo.png' %>
+      </div>
+      <div class="link-side">
+        <nav>
+          <ul>
+            <li><%= link_to  "New Tweet", new_tweet_path, class:"class" %></li>
+            <li><%= link_to  "All Tweet", tweets_path, class:"class" %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <footer>
+      <p>All rights reserved. Copyright©DiveIntoCode 2021</p>
+    </footer>
   </body>
 </html>
